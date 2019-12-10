@@ -30,7 +30,8 @@ body {
     background-color: #B2D6FF; /* Blue */
   }
 }
-@media (min-width: 600px) {
+
+@media (min-width: 920px) {
   body {
     padding-top: 0;
     padding-left: 17rem;
@@ -114,7 +115,7 @@ p.lead {
   outline-color: #d48a6e;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 920px) {
   #sideNav {
     text-align: center;
     position: fixed;
