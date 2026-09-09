@@ -1,527 +1,1156 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<script src="https://use.fontawesome.com/eea835e50d.js"></script>
-
 <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Pedram Babakhani — AI researcher and data scientist working on AI, energy, smart buildings, LLMs, and IoT." />
+  <meta name="theme-color" content="#f5f2eb" />
+  <meta property="og:title" content="Pedram Babakhani — AI Researcher" />
+  <meta property="og:description" content="Minimal portfolio website for Pedram Babakhani." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://pedrambabakhani.github.io/" />
+  <title>Pedram Babakhani — AI Researcher</title>
+  <style>
+    :root{
+      --bg:#f5f2eb;
+      --bg-2:#faf8f3;
+      --card:#f9f7f2;
+      --line:#d9d3c7;
+      --text:#101010;
+      --muted:#6d6a64;
+      --blue:#275dff;
+      --max:1180px;
+      --radius:20px;
+    }
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Pedram Babakhani resume">
-  <meta name="author" content="Pedram Babakhani">
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.55;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
 
-  <title>Pedram Babakhani</title>
+    a{color:inherit;}
+    img{display:block;max-width:100%;}
+    .wrap{width:min(calc(100% - 2rem), var(--max));margin:0 auto;}
+    .mono{font-family:"IBM Plex Mono", "SFMono-Regular", Consolas, monospace;}
 
-  <!-- Bootstrap core CSS -->
-  <link href="/mysite/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" >
+    header{
+      position:sticky;
+      top:0;
+      z-index:100;
+      background:rgba(245,242,235,.86);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(217,211,199,.72);
+    }
 
-  <!-- Custom fonts for this template -->
-  <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
-  <link href="/mysite/static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    nav{
+      min-height:74px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+    }
 
-  <!-- Custom styles for this template -->
-  <link href="/mysite/static/css/resume.min.css" rel="stylesheet">
+    .brand{
+      font-size:2rem;
+      font-weight:800;
+      letter-spacing:-.06em;
+      text-decoration:none;
+    }
 
+    .nav-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.95rem 1.15rem;
+      justify-content:flex-end;
+    }
+
+    .nav-links a{
+      text-decoration:none;
+      font-size:.86rem;
+      font-weight:700;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+    .nav-links a:hover{color:var(--text);}
+
+    .hero{
+      display:grid;
+      grid-template-columns:1.06fr .94fr;
+      gap:2.75rem;
+      align-items:center;
+      padding:2.5rem 0 3rem;
+      min-height:calc(100vh - 75px);
+    }
+
+    .eyebrow{
+      font-size:.88rem;
+      font-weight:800;
+      letter-spacing:.28em;
+      text-transform:uppercase;
+      color:#3d3b38;
+      margin-bottom:1.25rem;
+    }
+
+    h1{
+      margin:0;
+      font-size:clamp(3.3rem, 9vw, 6.2rem);
+      line-height:.92;
+      letter-spacing:-.08em;
+      max-width:7ch;
+    }
+
+    .subtitle{
+      margin:1.2rem 0 .7rem;
+      font-size:1.5rem;
+      color:#4f4b45;
+      display:flex;
+      flex-wrap:wrap;
+      gap:.75rem;
+      align-items:center;
+    }
+
+    .subtitle .dot{
+      width:.28rem;
+      height:.28rem;
+      border-radius:50%;
+      background:#8b857d;
+      display:inline-block;
+    }
+
+    .intro{
+      max-width:42rem;
+      font-size:1.18rem;
+      color:var(--muted);
+      margin:0;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:1rem 1.2rem;
+      margin-top:2rem;
+      align-items:center;
+    }
+
+    .button{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:56px;
+      padding:0 1.45rem;
+      border-radius:999px;
+      border:1px solid #0e1a33;
+      background:#0e1a33;
+      color:#fff;
+      text-decoration:none;
+      font-weight:700;
+      letter-spacing:-.02em;
+      transition:transform .15s ease, opacity .15s ease;
+    }
+
+    .button:hover,.text-link:hover,.simple-link:hover,.pub-link:hover{transform:translateY(-1px);opacity:.92;}
+
+    .simple-link{
+      text-decoration:none;
+      color:#26231f;
+      font-weight:600;
+      padding:.35rem 0;
+    }
+
+    .simple-link::after,
+    .pub-link::after,
+    .project-link::after{content:" ↗";}
+
+    .hero-right{
+      display:grid;
+      grid-template-columns:64px minmax(280px, 1fr) 190px;
+      gap:1.2rem;
+      align-items:stretch;
+      min-height:530px;
+    }
+
+    .location-rail{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-right:1px solid var(--line);
+      color:#767068;
+      padding:1rem 0;
+    }
+
+    .location-rail span{
+      writing-mode:vertical-rl;
+      text-transform:uppercase;
+      letter-spacing:.24em;
+      font-size:.88rem;
+      font-weight:700;
+      transform:rotate(180deg);
+    }
+
+    .portrait-frame{
+      background:linear-gradient(180deg, #f2f0eb 0%, #f8f6f1 100%);
+      border:1px solid var(--line);
+      min-height:100%;
+      display:flex;
+      align-items:flex-end;
+      justify-content:center;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .portrait-frame img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center 20%;
+      filter:grayscale(100%);
+      mix-blend-mode:multiply;
+      background:#f3f0ea;
+    }
+
+    .hero-side{
+      position:relative;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      padding:1.2rem 0 .25rem;
+      color:#7f786f;
+    }
+
+    .vertical-list{
+      font-size:.88rem;
+      line-height:2;
+      text-transform:uppercase;
+      letter-spacing:.22em;
+      align-self:flex-start;
+    }
+
+    .wireframe{
+      margin-top:2rem;
+      flex:1;
+      min-height:260px;
+      position:relative;
+      opacity:.75;
+    }
+    .wireframe:before,
+    .wireframe:after{
+      content:"";
+      position:absolute;
+      inset:auto 0 0 auto;
+      width:100%;
+      height:100%;
+      border-right:1px solid #ded8cc;
+      border-top:1px solid #ded8cc;
+      transform:skewY(-24deg);
+      transform-origin:bottom right;
+    }
+    .wireframe:after{
+      inset:auto 25px 25px auto;
+      width:72%;
+      height:72%;
+    }
+
+    .quick-grid{
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      margin-top:1rem;
+    }
+
+    .quick-grid-inner{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:0;
+    }
+
+    .quick-item{
+      padding:1rem .4rem 1.35rem 0;
+      min-height:100px;
+    }
+
+    .quick-item:not(:last-child){border-right:1px solid var(--line);padding-right:1rem;}
+    .quick-item strong{
+      display:block;
+      font-size:.9rem;
+      font-weight:700;
+      color:#80786e;
+      margin-bottom:.8rem;
+    }
+    .quick-item span{
+      display:block;
+      font-size:1rem;
+      font-weight:700;
+      letter-spacing:-.03em;
+    }
+
+    section{padding:4rem 0;}
+    .section-head{
+      display:grid;
+      grid-template-columns:1fr 1.2fr;
+      gap:2rem;
+      align-items:start;
+      margin-bottom:2rem;
+    }
+    .section-head h2{
+      margin:0;
+      font-size:clamp(2rem, 5vw, 3rem);
+      letter-spacing:-.06em;
+      line-height:1;
+    }
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      font-size:1.02rem;
+      max-width:48rem;
+    }
+
+    .about-grid,
+    .education-grid,
+    .teaching-grid,
+    .research-grid,
+    .projects-grid,
+    .contact-grid{
+      display:grid;
+      gap:1.2rem;
+    }
+
+    .about-grid{grid-template-columns:1fr 1fr;}
+    .education-grid{grid-template-columns:repeat(3,1fr);}
+    .teaching-grid{grid-template-columns:repeat(3,1fr);}
+    .research-grid{grid-template-columns:repeat(4,1fr);}
+    .projects-grid{grid-template-columns:repeat(2,1fr);}
+    .contact-grid{grid-template-columns:1.2fr .8fr;}
+
+    .card{
+      background:var(--bg-2);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:1.35rem;
+    }
+
+    .card h3{
+      margin:0 0 .75rem;
+      font-size:1.18rem;
+      letter-spacing:-.03em;
+    }
+    .card p{margin:.4rem 0;color:var(--muted);}
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:.35rem .62rem;
+      font-size:.8rem;
+      font-weight:700;
+      color:#403d38;
+      background:#f7f4ee;
+      margin:.18rem .22rem .18rem 0;
+    }
+
+    .timeline{
+      display:grid;
+      gap:0;
+      border-top:1px solid var(--line);
+    }
+
+    .timeline-item{
+      display:grid;
+      grid-template-columns:190px 1fr;
+      gap:1.4rem;
+      padding:1.5rem 0;
+      border-bottom:1px solid var(--line);
+    }
+
+    .timeline-date{
+      font-size:.9rem;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:#7e786e;
+      padding-top:.15rem;
+    }
+
+    .timeline-item h3{
+      margin:0 0 .3rem;
+      font-size:1.34rem;
+      letter-spacing:-.04em;
+    }
+
+    .org-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.45rem .8rem;
+      align-items:center;
+      color:#3f3c37;
+      margin-bottom:.7rem;
+    }
+    .org-row a{
+      color:var(--blue);
+      text-decoration:none;
+      font-weight:700;
+    }
+    .org-row .place{color:#7a756e;}
+    .timeline-item p{margin:.35rem 0;color:var(--muted);max-width:54rem;}
+    .timeline-item ul{margin:.75rem 0 0 1.1rem;padding:0;color:var(--muted);}
+    .timeline-item li{margin:.35rem 0;}
+
+    .project-block{
+      display:flex;
+      flex-direction:column;
+      gap:.85rem;
+      justify-content:space-between;
+      min-height:220px;
+    }
+
+    .project-kicker,
+    .small-kicker{
+      font-size:.78rem;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      color:#7f786e;
+      font-weight:800;
+    }
+
+    .project-link,
+    .pub-link,
+    .text-link{
+      color:var(--blue);
+      text-decoration:none;
+      font-weight:700;
+    }
+
+    .publication-list{
+      display:grid;
+      gap:.75rem;
+    }
+
+    .publication{
+      display:grid;
+      grid-template-columns:82px 1fr auto;
+      gap:1rem;
+      align-items:start;
+      padding:1rem 0;
+      border-top:1px solid var(--line);
+    }
+    .publication:last-child{border-bottom:1px solid var(--line);}
+    .publication-year{
+      font-weight:800;
+      color:#7c756b;
+      font-size:1rem;
+    }
+    .publication-title{
+      font-weight:700;
+      letter-spacing:-.02em;
+      margin-bottom:.2rem;
+    }
+    .publication-meta{
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .quote-box{
+      margin-top:2.25rem;
+      padding:1.6rem 1.4rem;
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:#f8f6f2;
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+    }
+    .quote-box blockquote{
+      margin:0;
+      font-size:1.2rem;
+      letter-spacing:-.02em;
+    }
+    .quote-tags{
+      display:flex;
+      gap:.7rem;
+      flex-wrap:wrap;
+      color:#6b655d;
+      font-size:.83rem;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      font-weight:700;
+    }
+
+    .contact-panel{
+      border-top:1px solid var(--line);
+      padding-top:2rem;
+    }
+    .contact-panel h2{margin:0 0 .7rem;}
+    .contact-panel p{color:var(--muted);max-width:42rem;}
+    .contact-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.8rem;
+      margin-top:1.2rem;
+    }
+    .contact-links a{
+      text-decoration:none;
+      padding:.7rem .9rem;
+      border:1px solid var(--line);
+      border-radius:999px;
+      font-weight:700;
+      background:#f8f5ef;
+    }
+
+    footer{
+      padding:1.3rem 0 2.5rem;
+      color:var(--muted);
+      font-size:.92rem;
+    }
+    .footer-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+      flex-wrap:wrap;
+      border-top:1px solid var(--line);
+      padding-top:1rem;
+    }
+
+    @media (max-width: 1080px){
+      .hero{grid-template-columns:1fr;min-height:auto;padding-top:2rem;}
+      .hero-right{grid-template-columns:56px minmax(0,1fr) 150px;min-height:460px;}
+      .research-grid{grid-template-columns:repeat(2,1fr);}
+      .education-grid,.teaching-grid,.projects-grid,.contact-grid,.about-grid,.section-head{grid-template-columns:1fr;}
+    }
+
+    @media (max-width: 860px){
+      header{position:static;}
+      nav{align-items:flex-start;flex-direction:column;padding:1rem 0;}
+      .nav-links{gap:.7rem .9rem;}
+      .hero-right{grid-template-columns:1fr;min-height:auto;}
+      .location-rail{order:2;border-right:0;border-top:1px solid var(--line);justify-content:flex-start;padding:1rem 0 0;}
+      .location-rail span{writing-mode:initial;transform:none;letter-spacing:.18em;}
+      .hero-side{min-height:unset;gap:1rem;}
+      .wireframe{min-height:140px;}
+      .quick-grid-inner{grid-template-columns:repeat(2,1fr);}
+      .quick-item:nth-child(2){border-right:0;}
+      .timeline-item{grid-template-columns:1fr;gap:.75rem;}
+      .publication{grid-template-columns:64px 1fr;}
+      .publication .pub-link{grid-column:2;}
+    }
+
+    @media (max-width: 600px){
+      .wrap{width:min(calc(100% - 1.15rem), var(--max));}
+      .subtitle{font-size:1.15rem;}
+      .intro{font-size:1rem;}
+      .quick-grid-inner,.research-grid,.education-grid,.teaching-grid,.projects-grid{grid-template-columns:1fr;}
+      .quick-item,.quick-item:not(:last-child){border-right:0;padding-right:0;border-bottom:1px solid var(--line);}
+      .quick-item:last-child{border-bottom:0;}
+      section{padding:3rem 0;}
+      .button{width:100%;}
+      .hero-actions{align-items:stretch;}
+    }
+  </style>
 </head>
+<body>
+  <header>
+    <nav class="wrap" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="Pedram Babakhani home">PB</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#teaching">Teaching</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
 
-<body id="page-top">
+  <main id="top">
+    <section class="hero wrap">
+      <div>
+        <div class="eyebrow mono">AI for a better built environment</div>
+        <h1>Pedram<br/>Babakhani</h1>
+        <div class="subtitle">
+          <span>AI Researcher</span><span class="dot"></span>
+          <span>Data Scientist</span><span class="dot"></span>
+          <span>Building Intelligence</span>
+        </div>
+        <p class="intro">
+          I work on machine learning, large language models, smart-building systems, and data-driven energy methods.
+          My research focuses on forecasting, generative models, explainable AI, and intelligent systems for more
+          efficient, comfortable, and human-centric buildings.
+        </p>
 
-  <nav class="navbar navbar-expand navbar-dark bg-dark fixed-top" id="sideNav">
-    <a class="navbar-brand js-scroll-trigger" href="#page-top">
-      <span class="d-none d-lg-block">
-        <img class="img-thumbnail" src="/mysite/static/img/peba.png" alt="">
-      </span>
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#About">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#Education">Education</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#Experiences">Experiences</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#Publications">Publications</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#Skills">Skills</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#PersonalInterests">Personal Interests</a>
-        </li>
-      </ul>
+        <div class="hero-actions">
+          <a class="button" href="Pedram_Babakhani_CV.pdf" target="_blank" rel="noreferrer">View CV</a>
+          <a class="simple-link" href="https://scholar.google.com/citations?hl=en&user=9sYmrS0AAAAJ" target="_blank" rel="noreferrer">Google Scholar</a>
+          <a class="simple-link" href="https://github.com/PedramBabakhani" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="simple-link" href="https://www.linkedin.com/in/pedram-babakhani-767b1ab4/" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="location-rail"><span>Berlin · Germany</span></div>
+
+        <!-- Replace the src below with your preferred transparent portrait if you create one later. -->
+        <div class="portrait-frame">
+          <img src="mysite/static/img/peba.png" alt="Portrait of Pedram Babakhani" />
+        </div>
+
+        <div class="hero-side">
+          <div class="vertical-list mono">
+            People<br/>Spaces<br/>Energy<br/>Data<br/>Intelligence
+          </div>
+          <div class="wireframe" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quick-grid wrap" aria-label="Overview">
+      <div class="quick-grid-inner">
+        <div class="quick-item">
+          <strong class="mono">01</strong>
+          <span>Research</span>
+          <div class="publication-meta">AI, Energy, Buildings</div>
+        </div>
+        <div class="quick-item">
+          <strong class="mono">02</strong>
+          <span>Experience</span>
+          <div class="publication-meta">Industry &amp; Academia</div>
+        </div>
+        <div class="quick-item">
+          <strong class="mono">03</strong>
+          <span>Publications</span>
+          <div class="publication-meta">Papers &amp; Preprints</div>
+        </div>
+        <div class="quick-item">
+          <strong class="mono">04</strong>
+          <span>Teaching</span>
+          <div class="publication-meta">Courses &amp; Supervision</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>About me</h2>
+          <p>
+            I am a PhD Candidate in AI and Energy at the Hermann-Rietschel-Institut (HRI), TU Berlin, and I work as a
+            Data Scientist &amp; AI Researcher across HRI and DAI-Labor. My current work sits at the intersection of
+            machine learning, energy systems, LLMs, IoT, and intelligent indoor environments.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <article class="card">
+            <div class="small-kicker mono">Current focus</div>
+            <h3>PhD candidate (2022–2027)</h3>
+            <p><strong>Hermann-Rietschel-Institut (HRI), TU Berlin</strong></p>
+            <p>Domain: AI and Energy</p>
+            <p>Thesis: <em>Building Energy Demand Forecast using Mixture of Experts</em></p>
+            <p><a class="text-link" href="https://hermann-rietschel-institut.de/" target="_blank" rel="noreferrer">HRI website</a></p>
+          </article>
+          <article class="card">
+            <div class="small-kicker mono">Current role</div>
+            <h3>Data Scientist &amp; AI Researcher</h3>
+            <p><strong>DAI-Labor &amp; HRI, TU Berlin</strong></p>
+            <p>LLMs, ML/DL, recommender systems, interactive spaces, IoT, smart buildings, and energy management.</p>
+            <p><a class="text-link" href="https://dai-labor.de/en/acs/iot-industry4-0/" target="_blank" rel="noreferrer">DAI-Labor IoT &amp; Industry 4.0</a></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="research">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Research areas</h2>
+          <p>
+            A compact overview of the themes that connect my academic and applied work.
+          </p>
+        </div>
+
+        <div class="research-grid">
+          <article class="card">
+            <h3>Forecasting &amp; time series</h3>
+            <p>Heat-load forecasting, multi-step prediction, transfer learning, and mixture-of-experts models.</p>
+            <span class="pill">Time series</span><span class="pill">Transformers</span><span class="pill">MoE</span>
+          </article>
+          <article class="card">
+            <h3>Explainable AI</h3>
+            <p>Interpretability for building-energy models with SHAP-based and attention-based explanations.</p>
+            <span class="pill">XAI</span><span class="pill">SHAP</span><span class="pill">Interpretability</span>
+          </article>
+          <article class="card">
+            <h3>LLMs &amp; NLP</h3>
+            <p>Question generation, subjective reasoning, language-model evaluation, and human-centered AI interfaces.</p>
+            <span class="pill">LLMs</span><span class="pill">NLP</span><span class="pill">IR</span>
+          </article>
+          <article class="card">
+            <h3>IoT &amp; smart buildings</h3>
+            <p>Interactive spaces, IoT middleware, smart building infrastructure, and digital assistants in the built environment.</p>
+            <span class="pill">IoT</span><span class="pill">Smart Buildings</span><span class="pill">Edge Systems</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Experience</h2>
+          <p>
+            From FPGA and embedded systems to computer vision, IoT, data science, and AI research.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-date">Oct 2022 — Now</div>
+            <div>
+              <h3>Data Scientist &amp; AI Researcher</h3>
+              <div class="org-row">
+                <a href="https://dai-labor.de/en/acs/iot-industry4-0/" target="_blank" rel="noreferrer">DAI-Labor</a>
+                <span>&amp;</span>
+                <a href="https://hermann-rietschel-institut.de/" target="_blank" rel="noreferrer">HRI, TU Berlin</a>
+                <span class="place">Berlin, Germany</span>
+              </div>
+              <p>
+                Working across AI research and applied intelligent systems with a focus on LLMs, ML/DL, recommender systems,
+                interactive spaces, IoT, smart buildings, and energy management.
+              </p>
+              <ul>
+                <li>Research on heat-load forecasting, transfer learning, explainable AI, and mixture-of-experts models for building energy systems.</li>
+                <li>Development of AI-driven solutions for interactive indoor environments, wayfinding, and care-related digital assistance.</li>
+                <li>Teaching, thesis supervision, and team leadership in the IoT &amp; Industry 4.0 context.</li>
+                <li>Key project involvement: <a href="https://www.tu.berlin/china/projekte/vergangene-projekte/spurt" target="_blank" rel="noreferrer">SPURT</a>, <a href="https://go-ki.org/en/" target="_blank" rel="noreferrer">Go-KI</a>, <a href="https://dai-labor.de/en/projects/kompetenzzentrum-pflege-4-0/" target="_blank" rel="noreferrer">Pflege 4.0</a>, <a href="https://www.energieforschung.de/de/aktuelles/news/2025/mit-maschinellem-lernen-zum-intelligent-gesteuerten-gebaeude-energiesystem" target="_blank" rel="noreferrer">ML-EBESR</a>, and <a href="https://gesundheitstechnische-gesellschaft.de/f-und-e/healthy-buildings-pruefstand-rlt-auto/" target="_blank" rel="noreferrer">RLT-Auto</a>.</li>
+              </ul>
+              <div style="margin-top:.7rem;">
+                <span class="pill">TensorFlow</span><span class="pill">PyTorch</span><span class="pill">LangChain</span><span class="pill">Python</span><span class="pill">JavaScript</span><span class="pill">Kubernetes</span><span class="pill">Docker</span><span class="pill">Solr</span><span class="pill">Grafana</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">Apr 2022 — Sep 2022</div>
+            <div>
+              <h3>Data Scientist — IoT</h3>
+              <div class="org-row">
+                <a href="https://digitalspine.io/" target="_blank" rel="noreferrer">Digital Spine</a>
+                <span class="place">Berlin, Germany</span>
+              </div>
+              <p>
+                Worked on IoT solutions for smart buildings and elevators, combining application logic, firmware-adjacent work,
+                and cloud-based workflows.
+              </p>
+              <ul>
+                <li>Contributed to digital building and elevator infrastructure in an IoT product environment.</li>
+                <li>Worked with JavaScript, Python, AWS, Git, and DevOps-oriented workflows.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">Nov 2021 — Apr 2022</div>
+            <div>
+              <h3>Data Scientist</h3>
+              <div class="org-row">
+                <span>Kenkou GmbH</span>
+                <span class="place">Berlin, Germany</span>
+              </div>
+              <p>
+                Built data-science components for phone-based photoplethysmography (PPG) and heart-rate variability analysis.
+              </p>
+              <ul>
+                <li>Developed work around a physiological-signal API using Python, Keras, SciPy, and BioPy.</li>
+                <li>Worked with PPG, ECG, and SCG signal-processing and modeling pipelines.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">Jan 2021 — Nov 2021</div>
+            <div>
+              <h3>Internship + Master Thesis</h3>
+              <div class="org-row">
+                <a href="https://www.u-blox.com/en" target="_blank" rel="noreferrer">u-blox AG</a>
+                <span class="place">Berlin, Germany</span>
+              </div>
+              <p>
+                Researched machine-learning-based Bluetooth direction finding for indoor environments.
+              </p>
+              <ul>
+                <li>Combined TensorFlow, Keras, Flask, Arduino, Raspberry Pi, UWB, and ZigBee tooling.</li>
+                <li>Resulted in the IPIN 2021 paper on Bluetooth direction finding using recurrent neural networks.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">Dec 2018 — Dec 2021</div>
+            <div>
+              <h3>Hardware Engineer</h3>
+              <div class="org-row">
+                <a href="https://www.trenz-electronic.de/en/" target="_blank" rel="noreferrer">Trenz Electronic GmbH</a>
+                <span class="place">Hüllhorst, Germany</span>
+              </div>
+              <p>
+                Worked in embedded systems and FPGA-related technical documentation.
+              </p>
+              <ul>
+                <li>Tools included Vivado, C, HLS/SDK, Altium, and Confluence.</li>
+                <li>Strengthened the engineering foundation behind later AI and systems work.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">Apr 2020 — Dec 2020</div>
+            <div>
+              <h3>Computer Vision &amp; Embedded Developer</h3>
+              <div class="org-row">
+                <a href="https://ptx-tech.de/en/home/" target="_blank" rel="noreferrer">PTX Tech</a>
+                <span class="place">Berlin, Germany</span>
+              </div>
+              <p>
+                Developed a safety-area determination pipeline using ToF cameras in an embedded/computer-vision setting.
+              </p>
+              <ul>
+                <li>Worked with Flask, C++, Python, PointCloud, ROS, Raspberry Pi, and Git.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">Aug 2018 — Nov 2018</div>
+            <div>
+              <h3>Embedded Software Developer</h3>
+              <div class="org-row">
+                <a href="https://www.assystem.com/en/" target="_blank" rel="noreferrer">Assystem AG</a>
+                <span class="place">Nürnberg, Germany</span>
+              </div>
+              <p>
+                Worked on remote system update mechanisms for Xilinx 7-series FPGA systems.
+              </p>
+              <ul>
+                <li>Used VHDL, C, PetaLinux, and Git in the development workflow.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">Aug 2017 — Nov 2017</div>
+            <div>
+              <h3>Internship</h3>
+              <div class="org-row">
+                <a href="https://www.bosch.com/" target="_blank" rel="noreferrer">Bosch Car Multimedia GmbH</a>
+                <span class="place">Hildesheim, Germany</span>
+              </div>
+              <p>
+                Implemented LSTM-related work on Zynq UltraScale+ MPSoC platforms.
+              </p>
+              <ul>
+                <li>Worked with VHDL, Python, and Git.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Projects</h2>
+          <p>
+            Selected projects from recent research and applied development work.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="card project-block">
+            <div>
+              <div class="project-kicker mono">Research collaboration</div>
+              <h3>SPURT</h3>
+              <p>
+                Sustainable Processes of Urban-Rural Transformations. Publicly connected to the research collaboration behind the
+                Opinerium work on subjective question generation.
+              </p>
+            </div>
+            <a class="project-link" href="https://www.tu.berlin/china/projekte/vergangene-projekte/spurt" target="_blank" rel="noreferrer">Project page</a>
+          </article>
+
+          <article class="card project-block">
+            <div>
+              <div class="project-kicker mono">Applied AI</div>
+              <h3>Go-KI</h3>
+              <p>
+                Project context around practical AI transfer and outreach, including DAI-Labor participation and public presentations.
+              </p>
+            </div>
+            <a class="project-link" href="https://go-ki.org/en/" target="_blank" rel="noreferrer">Project page</a>
+          </article>
+
+          <article class="card project-block">
+            <div>
+              <div class="project-kicker mono">Care technologies</div>
+              <h3>Pflege 4.0</h3>
+              <p>
+                Competence center for digital solutions in care, including digital support systems for care in the home environment
+                and interactive demonstrators.
+              </p>
+            </div>
+            <a class="project-link" href="https://dai-labor.de/en/projects/kompetenzzentrum-pflege-4-0/" target="_blank" rel="noreferrer">Project page</a>
+          </article>
+
+          <article class="card project-block">
+            <div>
+              <div class="project-kicker mono">Energy AI</div>
+              <h3>ML-EBESR</h3>
+              <p>
+                Development of machine-learning-based control and optimization for efficient and grid-supportive operation of
+                regenerative energy systems.
+              </p>
+            </div>
+            <a class="project-link" href="https://www.energieforschung.de/de/aktuelles/news/2025/mit-maschinellem-lernen-zum-intelligent-gesteuerten-gebaeude-energiesystem" target="_blank" rel="noreferrer">Project article</a>
+          </article>
+
+          <article class="card project-block">
+            <div>
+              <div class="project-kicker mono">HVAC systems</div>
+              <h3>RLT-Auto</h3>
+              <p>
+                Data-driven and model-based methods for automatic commissioning and monitoring of air-handling systems under
+                realistic operating conditions.
+              </p>
+            </div>
+            <a class="project-link" href="https://gesundheitstechnische-gesellschaft.de/f-und-e/healthy-buildings-pruefstand-rlt-auto/" target="_blank" rel="noreferrer">Project overview</a>
+          </article>
+
+          <article class="card project-block">
+            <div>
+              <div class="project-kicker mono">Public code</div>
+              <h3>Selected GitHub Work</h3>
+              <p>
+                Public repositories that reflect the hardware, machine-learning, and algorithmic side of the portfolio.
+              </p>
+              <div style="margin-top:.55rem;">
+                <a class="text-link" href="https://github.com/PedramBabakhani/RNN-Network-LSTM-Implementation---VHDL" target="_blank" rel="noreferrer">RNN / LSTM Implementation — VHDL</a><br/>
+                <a class="text-link" href="https://github.com/PedramBabakhani/Automatic-Gamma-Correction" target="_blank" rel="noreferrer">Automatic Gamma Correction</a><br/>
+                <a class="text-link" href="https://github.com/PedramBabakhani/pedrambabakhani.github.io" target="_blank" rel="noreferrer">Website source</a>
+              </div>
+            </div>
+            <a class="project-link" href="https://github.com/PedramBabakhani" target="_blank" rel="noreferrer">GitHub profile</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Publications</h2>
+          <p>
+            Selected publications and preprints, newest first. You can add or remove items easily by duplicating a publication block below.
+          </p>
+        </div>
+
+        <div class="publication-list">
+          <article class="publication">
+            <div class="publication-year">2026</div>
+            <div>
+              <div class="publication-title">Transfer learning and explainable AI for heating load forecasting: A large-scale benchmark with SHAP-based static features</div>
+              <div class="publication-meta">Energy and AI, 2026</div>
+            </div>
+            <a class="pub-link" href="https://doi.org/10.1016/j.egyai.2026.100722" target="_blank" rel="noreferrer">DOI</a>
+          </article>
+
+          <article class="publication">
+            <div class="publication-year">2026</div>
+            <div>
+              <div class="publication-title">An Explainable Transformer-Based Mixture of Experts for Heat Load Forecasting</div>
+              <div class="publication-meta">IEEE Access, Vol. 14, 2026</div>
+            </div>
+            <a class="pub-link" href="https://doi.org/10.1109/ACCESS.2026.3656258" target="_blank" rel="noreferrer">DOI</a>
+          </article>
+
+          <article class="publication">
+            <div class="publication-year">2026</div>
+            <div>
+              <div class="publication-title">Long-term building energy load imputation via exogenous-condition-based generative modelling</div>
+              <div class="publication-meta">SSRN preprint, 2026</div>
+            </div>
+            <a class="pub-link" href="https://doi.org/10.2139/ssrn.6761560" target="_blank" rel="noreferrer">DOI</a>
+          </article>
+
+          <article class="publication">
+            <div class="publication-year">2026</div>
+            <div>
+              <div class="publication-title">A multi-task learning framework for cross-building imputation of long-term missing heating load data</div>
+              <div class="publication-meta">SSRN preprint, 2026</div>
+            </div>
+            <a class="pub-link" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6669303" target="_blank" rel="noreferrer">Abstract</a>
+          </article>
+
+          <article class="publication">
+            <div class="publication-year">2025</div>
+            <div>
+              <div class="publication-title">Influence of occupancy data on heating and electricity load forecasting using machine learning</div>
+              <div class="publication-meta">Journal of Physics: Conference Series, 2025</div>
+            </div>
+            <a class="pub-link" href="https://doi.org/10.1088/1742-6596/3140/5/052023" target="_blank" rel="noreferrer">DOI</a>
+          </article>
+
+          <article class="publication">
+            <div class="publication-year">2025</div>
+            <div>
+              <div class="publication-title">Imputing the long-term missing heating load data using a generative network</div>
+              <div class="publication-meta">Energy and AI, Vol. 22, 2025</div>
+            </div>
+            <a class="pub-link" href="https://doi.org/10.1016/j.egyai.2025.100637" target="_blank" rel="noreferrer">DOI</a>
+          </article>
+
+          <article class="publication">
+            <div class="publication-year">2024</div>
+            <div>
+              <div class="publication-title">GGAS: Ground Guiding Assistant System for Interactive Indoor Wayfinding</div>
+              <div class="publication-meta">IPIN 2024</div>
+            </div>
+            <a class="pub-link" href="https://doi.org/10.1109/IPIN62893.2024.10786133" target="_blank" rel="noreferrer">DOI</a>
+          </article>
+
+          <article class="publication">
+            <div class="publication-year">2024</div>
+            <div>
+              <div class="publication-title">Opinerium: Subjective Question Generation Using Large Language Models</div>
+              <div class="publication-meta">IEEE Access, Vol. 12, 2024</div>
+            </div>
+            <a class="pub-link" href="https://doi.org/10.1109/ACCESS.2024.3398553" target="_blank" rel="noreferrer">DOI</a>
+          </article>
+
+          <article class="publication">
+            <div class="publication-year">2021</div>
+            <div>
+              <div class="publication-title">Bluetooth Direction Finding Using Recurrent Neural Network</div>
+              <div class="publication-meta">IPIN 2021</div>
+            </div>
+            <a class="pub-link" href="https://doi.org/10.1109/IPIN51156.2021.9662611" target="_blank" rel="noreferrer">DOI</a>
+          </article>
+
+          <article class="publication">
+            <div class="publication-year">2015</div>
+            <div>
+              <div class="publication-title">Automatic gamma correction based on the average brightness</div>
+              <div class="publication-meta">Advances in Computer Science: an International Journal, 2015</div>
+            </div>
+            <a class="pub-link" href="https://www.acsij.org/index.php/acsij/article/view/390" target="_blank" rel="noreferrer">Article</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="teaching">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Teaching &amp; education</h2>
+          <p>
+            Teaching, supervision, and the academic path behind the portfolio.
+          </p>
+        </div>
+
+        <div class="teaching-grid" style="margin-bottom:1.2rem;">
+          <article class="card">
+            <h3>Ambient Assisted Living</h3>
+            <p>Main lecturer at TU Berlin.</p>
+            <span class="pill">WiSe 2022</span><span class="pill">SoSe 2023</span><span class="pill">WiSe 2023</span><span class="pill">SoSe 2024</span>
+          </article>
+          <article class="card">
+            <h3>Data Science Project</h3>
+            <p>Master course, group supervision at TU Berlin.</p>
+            <span class="pill">SoSe 2023</span><span class="pill">SoSe 2024</span>
+          </article>
+          <article class="card">
+            <h3>Multi-Media System</h3>
+            <p>Teaching Assistant at Shahid Beheshti University, Tehran.</p>
+            <span class="pill">SoSe 2015</span>
+          </article>
+        </div>
+
+        <div class="education-grid">
+          <article class="card">
+            <div class="small-kicker mono">2022–2027</div>
+            <h3>PhD Candidate</h3>
+            <p><strong>Energy, Comfort and Health in Buildings</strong></p>
+            <p>Hermann-Rietschel-Institut, TU Berlin, Berlin, Germany</p>
+            <p>Thesis: Building Energy Demand Forecast using Mixture of Experts</p>
+          </article>
+          <article class="card">
+            <div class="small-kicker mono">2017–2021</div>
+            <h3>M.Sc. Data Analytics</h3>
+            <p><strong>Information System and Machine Learning Lab</strong></p>
+            <p>University of Hildesheim, Hildesheim, Germany</p>
+            <p>Thesis: Machine Learning-based Bluetooth Direction Finding for Indoor Environments</p>
+          </article>
+          <article class="card">
+            <div class="small-kicker mono">2011–2016</div>
+            <h3>B.Sc. Computer Engineering</h3>
+            <p><strong>Department of Computer Sciences and Engineering</strong></p>
+            <p>Shahid Beheshti University, Tehran, Iran</p>
+            <p>Thesis: ASIC implementation of Automatic Gamma Correction based on Average of Brightness</p>
+          </article>
+        </div>
+
+        <div class="quote-box">
+          <blockquote>“Towards intelligent, sustainable and human-centric buildings.”</blockquote>
+          <div class="quote-tags mono">Research × Impact × People</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap contact-panel">
+        <div class="contact-grid">
+          <div>
+            <h2>Get in touch</h2>
+            <p>
+              If you want to collaborate on AI research, energy forecasting, smart-building systems, LLM applications,
+              or applied data-science work, feel free to reach out.
+            </p>
+            <div class="contact-links">
+              <a href="mailto:pedram.babakhani@tu-berlin.de">pedram.babakhani@tu-berlin.de</a>
+              <a href="mailto:pedrambbk@gmail.com">pedrambbk@gmail.com</a>
+              <a href="https://github.com/PedramBabakhani" target="_blank" rel="noreferrer">GitHub</a>
+              <a href="https://www.linkedin.com/in/pedram-babakhani-767b1ab4/" target="_blank" rel="noreferrer">LinkedIn</a>
+              <a href="https://scholar.google.com/citations?hl=en&user=9sYmrS0AAAAJ" target="_blank" rel="noreferrer">Google Scholar</a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="small-kicker mono">Skills snapshot</div>
+            <h3>Tools &amp; stack</h3>
+            <p>Python, C/C++, JavaScript, Java, TensorFlow, PyTorch, scikit-learn, GPT, Gemini, LLaMA, OpenAI, LangChain, Hugging Face, Flask, FastAPI, Docker, Kubernetes, AWS, GCP, SQLite, MongoDB, Redis, Solr, Arduino, Raspberry Pi, ESP32, ZigBee, BLE, UWB, VHDL, Verilog.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <span>© <span id="year"></span> Pedram Babakhani</span>
+      <span>Minimal GitHub Pages portfolio · single-file HTML</span>
     </div>
-  </nav>
+  </footer>
 
-  <div class="container-fluid">
-
-    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="About">
-      <div class="w-100">
-        <h1 class="mb-0">Pedram
-          <span class="mb-0">Babakhani</span>
-        </h1>  
-        <div class="subheading mb-5">
-          <a href="mailto:name@email.com "> pedram.babakhani@dai-labor.de </a> <br>
-	  <a href="mailto:name@email.com "> pedram.babakhani@tu-berlin.de</a> <br>
-          <a href="mailto:name@email.com "> pedrambbk@gmail.com</a>
-	</div>
-        <p class="lead mb-5" align=justify>I am a graduate of M.Sc.Data Analytics from the Information System and Machine Learning Lab <a href="https://www.ismll.uni-hildesheim.de/da/index_en.html"> (ISMLL) </a> at Universität Hildesheim in Germany. Currently I am a research assistant in the Distributed Artificial Inteligence Lab <a href="https://dai-labor.de/"> (DAI Labor) </a> at Technische Universität Berlin <a href="https://www.tu.berlin/"> (TU Berlin) </a>. Mainly, I am skilled in Machine Learning ,Deep Learning, Information Retrieval and Natural Language Processing (NLP). I would like to indulge myself in investigation, researching and applying these concepts into real world problems.</p>
-          <a href="https://www.linkedin.com/in/pedram-babakhani-767b1ab4/">
-		  <i class="fab fa-linkedin" style="font-size:40px ;color:black"></i></a>
-          <a href="https://github.com/PedramBabakhani/">
-            <i class="fab fa-github" style="font-size:40px ;color:black" ></i></a>
-          <a href="https://scholar.google.com/citations?user=9sYmrS0AAAAJ&hl=en#"> <b style="font-size:40px ;color:black" >G</b> </a>
-    </section>
-    <hr class="m-0">
-
-    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="Education">
-      <div class="w-100">
-        <h2 class="mb-5">Education</h2>
-       
-<!-- 	<div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-          <div class="resume-content">
-            <h3 class="mb-0">PhD Candidate</h3>
-            <div class="subheading mb-3">Technical University of Berlin, Germany</div>
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="text-dark">Oct 2022 - Present</span>
-          </div>
-        </div>
-	       -->
-	      
-	      
-	      
-        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-          <div class="resume-content">
-            <h3 class="mb-0">M.Sc. Data analytics</h3>
-            <div class="subheading mb-3">Universität Hildesheim, Hildesheim, Germany</div>
-          
-            <ul>
-		 <p>Master Thesis: Machine Learning-based Bluetooth Direction Finding from Simulation to Real Measurements</p> 
-		    
-		 <p>Student Reserach Project (15 ECTS): Pedestrian Motion Predictiong using FPGA to Accelerate Inference <a href="Student_Research_Project_Report.pdf"> [PDF]</a> <i class="fa fa-file-pdf-o" aria-hidden="true" style="font-size:24px"></i></p> 
-
-              <li>Machine Learning &amp; Modern Optimization Thechniques</li>
-              <li>Machine learning Lab - Implementation of algorithms from scratch</li>
-              <li>Deep Learning - Projects on CNN &amp; LSTM </li>
-	      <li>Reinforement Learning</li>
-              <li>Advance Machine Learning &amp; Planing and Optimal Control</li>
-              <li>Big Data Analytics &amp; Big Data Lab: Principles of Data Base and Big Data + introduction of Apache Hadoop &amp; Spark </li>
-              <li>Research on Pedestrian Motion Prediction using LSTM on Artix 7 FPGA platform - 15 ECTS</li>
-              <li>Seminar presentations on latest papers from Machine learning and Deep Learning conferences </li>
-              <li>Natural Language Processing &amp; Computer Vision (Optionals)</li>
-	      <li>Product development and technologies for navigation and driver assistance systems</li>
-            </ul>
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="text-dark">April 2017 - Present</span>
-          </div>
-        </div>
-
-        
-        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-          <div class="resume-content">
-            <h3 class="mb-0"> B.Sc. Computer Engineering</h3>
-            <div class="subheading mb-3"> Shahid Beheshti University (SBU), Tehran, Iran</div> 
-              <p>Bachelor Thesis: ASIC Implementation of Automatic Gamma Correction Based on Average of Brightness</p> 
-              <p align=justify> I designed an ASIC of Automatic Gamma Correction based on Average of Brightness for fbachelorgray scale image enhancement application. The idea of automatic gamma correction was based on a published paper of mine in 2015 (you can find in pulication section). I have implemented the proposed idea using VHDL in Vivado 14.2. I have synthesized the design using Design Vision Tool. Finally by feeding the sunthesized design to Cadence tool, I got the RTL layout of the design. It can be used besid an imaging tool for specific application as it has been reported it is ultra low power design with high quality enhancement for gray scale images. </p>	  
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="text-dark">September 2011 - August 2016</span>
-          </div>
-        </div>
-      </div>
-    </section>
-	  
-    <hr class="m-0">
-
-    <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="Experiences">
-      <div class="w-100">
-        <h2 class="mb-5">Experiences</h2>
-	
-	<div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-          <div class="resume-content">
-            <h3 class="mb-0">Research Assistant</h3>
-            <div class="subheading mb-3"> DAI Labor at Technische Universität Berlin, Berlin</div>
-            <p align=justify> 
-              I am researching and working on third party funded projects in the areas of machine learning, information retrieval and natural language processing. I am the main trainer of a bachelor course, Ambient Assisted Living and I have been supervising bachelor theses.
-	      More information about <a href="https://www.dai-labor.de/" > DAI Labor </a>.
-          </div>
-		<div class="resume-date text-md-right">
-           <span class="text-dark">October 2022 - Present</span>
-          </div> 
-	 </div>        
-	      
-	      
-	      
-	      
-<div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-          <div class="resume-content">
-            <h3 class="mb-0">IoT Data Scientist</h3>
-            <div class="subheading mb-3"> Digital Spine GmbH, Berlin</div>
-            <p align=justify> 
-              I am researching and working on IoT mand Smart Building with the focus of energy optimization, monitoring and cost efficiency of buildings. Mainly I am working with edgebox devices which send real time data acquired from enviromental sensors to a cloud (AWS) based customer dashboard.  </p>
-              More information about <a href="https://www.digitalspine.io/" > Digital Spine </a>.
-          </div>
-		<div class="resume-date text-md-right">
-           <span class="text-dark">April 2022 - September 2022</span>
-          </div> 
-	 </div>          	      
-	      
-	<div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-          <div class="resume-content">
-            <h3 class="mb-0">Data Scientist</h3>
-            <div class="subheading mb-3"> Kenkou GmbH, Berlin</div>
-            <p align=justify> 
-              I have been researching and working on cardiovascular measurements and diagnosis based on smartphone measurements. Mainly I am working with  Seismocardiography (SCG) and Plethysmocardiography (PPG). During this time, I became familiar with heart function and principles of cardiovascular diagnosis and analysis.   </p>
-              More information about <a href="https://www.kenkou.io/" > Kenkou </a>.
-          </div>
-		<div class="resume-date text-md-right">
-           <span class="text-dark">January 2022 - April 2022</span>
-          </div> 
-	 </div>           
-	      
-	      
-	<div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-          <div class="resume-content">
-            <h3 class="mb-0">Internship + Master Thesis Project</h3>
-            <div class="subheading mb-3"> u-blox AG, Berlin</div>
-            <p align=justify> 
-              Master Thesis : Machine Learning based Bluetooth Direction Finding 
-       	      <a href="Master_Thesis.pdf"> [PDF] </a> <i class="fa fa-file-pdf-o" aria-hidden="true" style="font-size:24px"></i></p>
-              More information about <a href="https://u-blox.com" > u-blox AG </a>.
-          </div>
-		<div class="resume-date text-md-right">
-           <span class="text-dark">January- 2021 - December 2021</span>
-          </div>
-        </div> 
-	      
-	      
-	 <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-          <div class="resume-content">
-            <h3 class="mb-0">Computer Vision & Embedded Developer</h3>
-            <div class="subheading mb-3">PTX Tech GmbH GmbH, Berlin</div>
-            <p align=justify> 
-              I have developed a platform based on a Analoge Device ToF camera and Dragon 96 Board which was detection a working 3D volume to determine safety area around a robot. I have been working with Nimbus 3D and ToF Blaze BAsler camera using Raspberry Pi and Invidia Jetson Nan developement kits. 
-              More information about <a href="https://ptx-tech.de" > PTX Tech  GmbH </a>.
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="text-dark">April 2020 - December 2020</span>
-          </div>
-        </div>
-	 
-
-        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-          <div class="resume-content">
-            <h3 class="mb-0">Hardware Engineer</h3>
-            <div class="subheading mb-3">Trenz Electronic GmbH, Hüllhorst</div>
-            <p align=justify> 
-              This work has been the most steep learning curve in terms of both improving my understanding of Embedded System Design and HDL languages in production environment. I provide Technical Reference Manual (TRM) and Reference Design for Trenz Electronic productions. Trenz Electronic GmbH is well known in designing and development of PCBs for a wide range of applications.   This work has given me this opportunity to work with different boards including different FPGA families a side with electronic and electrical peripherals on boards. I have workd on Xilinx 7 Series, Xilinx UltraScale+ MPSoC, Intel Aria10, Intel Cyclone/Max10 and CPLDs concept. In this period of time, I have enhanced my knowledge of Embedded System Design significantly. Furtheremore, I learn how to work with PetaLinux as an embedded operatin system for emebeded software applications. 
-		    More information about <a href="https://trenz-electronic.de" > Trenz Electronic GmbH </a>.
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="text-dark">December 2018 - December 2021</span>
-          </div>
-        </div>
-
-        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-          <div class="resume-content">
-            <h3 class="mb-0">Embedded Software Developer</h3>
-            <div class="subheading mb-3">Assystem Germany GmbH ( Currently Expleo), Nünberg</div>
-            <p align=justify>
-              I worked at Assyetem Germany GmbH as a Hardware Developer and gained very high professional experience as I was working with highly experienced hardware developer and sophesticated team memebrs. I was working on Remote System Updates using Digital Signal Injection. Xilinx 7 series FPGA have a feature called Multiboot, I've been designing a system to recieve a new configuration (bitstream) through UART and store it in the flash memory in order to boot the entire system with the recieved  configuration.  It was my first professional hardware developement, It was quite inspiring for me.
-<a href="https://www.assystem.com/en/" > Assystem Germany AG</a>.
-            </p>
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="text-dark">August 2018 - December 2018</span>
-          </div>
-        </div>
-
-        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-          <div class="resume-content">
-            <h3 class="mb-0">RNN Implementation on FPGA (Internship)</h3>
-            <div class="subheading mb-3">Bosch Car Multimedia GmbH, Hildesheim</div>
-            <p align=justify>
-              The internship at Bosch was the first practical experience in Germany. I've been working on Recurrent Neural Networks(RNN) and its impelemtation on UltraScale+ MPSoC. I learn deeply about Neural Networks and how to implement Neural Network application on FPGA in order to decrease the inference time significantly. Additionally, I was working with a group of international students which was my first cooperation in an international enviroment which I learn a lot a part from scientific aspects. 
-
-            </p>
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="text-dark">August 2017 - November 2017</span>
-          </div>
-        </div>
-
-        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-          <div class="resume-content">
-            <h3 class="mb-0">Image Processing Algorithms Implementation (Studentwerk)</h3>
-            <div class="subheading mb-3">Shahid Beheshti University, Image Processing Lab, Tehran, Iran</div>
-            <p align=justify>
-              I have been working in Image Processing Lab in my former university with a group of PhD students who were researching on Image Processing and Computer Vision. My task was, Implementation of their ideas in MATLAB. 
-
-            </p>
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="text-dark">June 2016 - August 2016</span>
-          </div>
-        </div>
-
-        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-          <div class="resume-content">
-            <h3 class="mb-0">Teacher Assistant of Multimedia Systems </h3>
-            <div class="subheading mb-3">Shahid Beheshti University, Tehran, Iran</div>
-            <p align=justify>
-              I had a weekly tutorial lecture in order to teach MATLAB and Image Processing Toolbox. Furthermore, I was proposing and correcting assignments and project.
-
-            </p>
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="text-dark">Febuary 2015 - July 2015</span>
-          </div>
-        </div>
-
-         <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-          <div class="resume-content">
-            <h3 class="mb-0">Teacher Assistant of Machine Language and Assembley </h3>
-            <div class="subheading mb-3">Shahid Beheshti University, Tehran, Iran</div>
-            <p align=justify>
-              I had a weekly tutorial lecture in order to teach x86 Assembly Language and principle of assemblers. Furthermore, I was proposing and correcting assignments.
-
-            </p>
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="text-dark">Febuary 2014 - July 2014</span>
-          </div>
-        </div>
-    </section>
-<section>
-<!-- 	<hr class="m-0"> -->
-    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="Publications">
-      <div class="w-100">
-        <h2 class="mb-3">Publications</h2>
-        <br>
-        <ul class="fa-ul mb-0">
-          <li>
-           <i class="fa-li fa fa-check"></i>
-		P. Babakhani, T. Merk, M. Mahlig, I. Sarris, D. Kalogiros and P. Karlsson, "Bluetooth Direction Finding using Recurrent Neural Network," 2021 International Conference on Indoor Positioning and Indoor Navigation (IPIN), 2021, pp. 1-7, doi: 10.1109/IPIN51156.2021.9662611. <a href="https://ieeexplore.ieee.org/document/9662611" > (Link) </a>
-
-       	  </li>
-       	  <br>
-       	  <li>
-           <i class="fa-li fa fa-check"></i>
-	 	Pedram Babakhani, Parham Zarei, “Automatic gamma correction based on average of brightness”,  ACSIJ journal, Vol. 4, Issue 6, No. 18, November 2015. <a href="http://www.acsij.org/acsij/article/viewFile/390/344" > (Link) </a>.
-       		</li>
-	<br>
-       	  <li>
-           <i class="fa-li fa fa-check"></i>
-            Pedram Babakhani, ”Image gamma correction based on average brightness and deviation from center of histogram”, Second International Conference on Advances in Engineering and Basic Sciences , March 2015, London-Tehran. <a href="https://www.civilica.com/Paper-AEBSCONF02-AEBSCONF02_176=%D8%A7%D8%B5%D9%84%D8%A7%D8%AD-%DA%AF%D8%A7%D9%85%D8%A7%DB%8C-%D8%AA%D8%B5%D9%88%DB%8C%D8%B1-%D8%A8%D8%B1-%D8%A7%D8%B3%D8%A7%D8%B3-%D9%85%DB%8C%D8%A7%D9%86%DA%AF%DB%8C%D9%86-%D8%B1%D9%88%D8%B4%D9%86%D8%A7%DB%8C%DB%8C-%D9%88-%D8%A7%D9%86%D8%AD%D8%B1%D8%A7%D9%81-%D8%A7%D8%B2-%D9%85%D8%B1%DA%A9%D8%B2-%D9%87%DB%8C%D8%B3%D8%AA%D9%88%DA%AF%D8%B1%D8%A7%D9%85.html" > (Link) </a>.
-       		<a href="HN10104860426.pdf"> [PDF] </a> <i class="fa fa-file-pdf-o" aria-hidden="true" style="font-size:24px"></i></p>
-		</li>
-         </ul>
-     </div>
-</section>
-	
-	    
-	    
-    <hr class="m-0">
-    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="Skills">
-      <div class="w-100">
-        <h2 class="mb-5">Skills</h2>
-
-        <div class="subheading mb-3">Programming Languages</div>
-        <ul class="fa-ul mb-0">
-          <li>
-           <i class="fa-li fa fa-check"></i>
-            Programming Language: <b> Python, C/C++, Java,  JavaScript, HTML, CSS</b>
-            <div class="progress w-50">
-                 <div class="progress-bar bg-dark" role="progressbar" style="width: 80%" aria-valuemin="80" aria-valuemax="100"></div>
-            </div>
-       	  </li>
-       	  <br>
-       	  <li>
-           <i class="fa-li fa fa-check"></i>
-            HDLs: <b> VHDL, Verilog </b>
-            <div class="progress w-50">
-                 <div class="progress-bar bg-dark" role="progressbar" style="width: 90%" aria-valuemin="90" aria-valuemax="100"></div>
-            </div>
-       		</li>     
-         </ul>
-         <br>
-         <br>
-        <div class="subheading mb-3">Frameworks and Tools</div>
-        <ul class="fa-ul mb-0">
-       	  <li>
-           <i class="fa-li fa fa-check"></i>
-			Machine Learning Frameworks: <b> TensorFlow, PyTorch, Scikit Learn, Keras </b> 
-			<div class="progress w-50">
-                 <div class="progress-bar bg-dark" role="progressbar" style="width: 75%" aria-valuemin="75" aria-valuemax="100"></div>
-            </div>
-       	  </li>
-          <br>
-          <li>
-           <i class="fa-li fa fa-check"></i>
-            <b> MATLAB </b> (Image Processing, Optimization, Mahine Learning, Simulink) 
-            <div class="progress w-50">
-                 <div class="progress-bar bg-dark" role="progressbar" style="width: 70%" aria-valuemin="70" aria-valuemax="100"></div>
-            </div>
-       	  </li>
-          <br>
-       	  <li>
-           <i class="fa-li fa fa-check"></i>
-            <b> MySQL, MongoDB </b>
-            <div class="progress w-50">
-                 <div class="progress-bar bg-dark" role="progressbar" style="width: 80%" aria-valuemin="60" aria-valuemax="100"></div>
-            </div>
-       	  </li>
-          <br>
-       	  <li>
-           <i class="fa-li fa fa-check"></i>
-            <b> Apache Hadoop, Apache Spark, Apache Solr </b>
-            <div class="progress w-50">
-                 <div class="progress-bar bg-dark" role="progressbar" style="width: 60%" aria-valuemin="50" aria-valuemax="100"></div>
-            </div>
-          </li>
-	
-	<br>
-       	  <li>
-	 <i class="fa-li fa fa-check"></i>
-	     <b> GitLat, GitHub,  Confluence, Jira, Linear</b>
-			<div class="progress w-50">
-                 <div class="progress-bar bg-dark" role="progressbar" style="width: 90%" aria-valuemin="90" aria-valuemax="100"></div>
-            </div>
-       	  </li>	
-		
-	<br>
-       	  <li>
-           <i class="fa-li fa fa-check"></i>
-	    <b> Docker,  Kubernetes</b>
-			<div class="progress w-50">
-                 <div class="progress-bar bg-dark" role="progressbar" style="width: 90%" aria-valuemin="90" aria-valuemax="100"></div>
-            </div>
-       	  </li>	
-		
-	<br>
-       	  <li>
-           <i class="fa-li fa fa-check"></i>
-	    <b> AWS,  GCP, Azure</b>
-			<div class="progress w-50">
-                 <div class="progress-bar bg-dark" role="progressbar" style="width: 80%" aria-valuemin="90" aria-valuemax="100"></div>
-            </div>
-       	  </li>	
-          
-		
-          <br>
-       	  <li>
-           <i class="fa-li fa fa-check"></i>
-	<b> Git, Apache SVN </b>
-			<div class="progress w-50">
-                 <div class="progress-bar bg-dark" role="progressbar" style="width: 90%" aria-valuemin="90" aria-valuemax="100"></div>
-            </div>
-       	  </li>
-		
-	  <br>
-       	  <li>
-           <i class="fa-li fa fa-check"></i>
-            Special Library: <b> Point Cloud (PCL), OpenCV, OpenGL, Gensim, Scipy, Seaborn, BioPy, NLTK, Accelerate, CUDA </b> 
-            <div class="progress w-50">
-                 <div class="progress-bar bg-dark" role="progressbar" style="width: 80%" aria-valuemin="80" aria-valuemax="100"></div>
-            </div>
-       	  </li>
-          <br>
-       	  <li>
-		
-          <br>
-       	  <li>
-           <i class="fa-li fa fa-check"></i>
-			Build System Sofware: <b> Cmake, Maven </b>
-			<div class="progress w-50">
-                 <div class="progress-bar bg-dark" role="progressbar" style="width: 90%" aria-valuemin="90" aria-valuemax="100"></div>
-            </div>
-       	  </li>
-          
-	  <br>
-       	  <li>
-           <i class="fa-li fa fa-check"></i>
-			PCB Design: <b> Altium Design </b>
-			<div class="progress w-50">
-                 <div class="progress-bar bg-dark" role="progressbar" style="width: 60%" aria-valuemin="50" aria-valuemax="100"></div>
-            </div>
-       	  </li>
-		
-          <br>
-       	  <li>
-           <i class="fa-li fa fa-check"></i>
-			Boards &amp; FPGAs: <b> Zynq UltraScale+, Xilinx 7 Series, Intel Max10/Aria10/Cyclone, Lattice, Microsemi </b>
-       	  </li>
-		
-          <br>
-       	  <li>
-           <i class="fa-li fa fa-check"></i>
-			Developement Kits: <b> Raspberry Pi 4, Jetson Nano, Dragon 96, MicroZed </b>
-       	  </li>
-		
-          <br>
-       	  <li>
-           <i class="fa-li fa fa-check"></i>
-			IDE: <b> Spyder,PyCharm, Jupyter, Visual Studio, Eclipse, Vivado/SDK/HLS Xilinx,Netbeans </b>
-       	  </li>
-          <br>
-       	  <li>
-           <i class="fa-li fa fa-check"></i>
-			OS: <b> Linux Ubuntu, PetaLinux,  Cent OS , ROS</b>
-       	  </li>
-          <br>
-       	  <li>
-           <i class="fa-li fa fa-check"></i>
-			General Software: <b> Microsoft Office, LaTeX </b>
-       	  </li>
-         </ul>
-         <br>
-         <br>
-       	  <div class="subheading mb-3">Languages</div>
-           <ul class="fa-ul mb-0">
-            <li>
-            <i class="fa-li fa fa-check"></i>
-             <b> Persian </b> : Native
-       	    </li>
-
-       	    <li>
-             <i class="fa-li fa fa-check"></i>
-              <b> English </b> : Fluent  
-       		</li>
-       	   <li>
-            <i class="fa-li fa fa-check"></i>
-              <b> German </b>: Conversational 
-       		</li>	   
-          </ul>
-         </div>
-    </section>
-    <hr class="m-0">
-    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="PersonalInterests">
-      <div class="w-100">
-        <h2 class="mb-5">Personal Interests</h2>
-        <p align=justify> Apart from Technology and AI aspect, I have another aspect in my life which is Art. I play Tar and Setar (Traditional Iranian Music Instruments) for almost 17 years, I had several performances as solo, trio as well as an orchestral training with children in Iran. Furthermore I do painting time to time, I am inspired by contemporary art movements especially abstract experssionism. 
-        I enjoy biking, hiking, jogging and when I am forced indoors, I watch movies and documentaries and I listen to audiobooks mostley about politics, art and history. </p>
-      </div>
-    </section>
-  </div>
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="/mysite/static/vendor/jquery/jquery.min.js"></script>
-  <script src="/mysite/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Plugin JavaScript -->
-  <script src="/mysite/static/vendor/jquery-easing/jquery.easing.min.js"></script>
-  <!-- Custom scripts for this template -->
-  <script src="/mysite/static/js/resume.min.js"></script>
-
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
-
 </html>
